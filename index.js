@@ -25,6 +25,24 @@ app.post('/addbrands' , async(req, res) => {
 })
 
 
+app.get('/allbrands', async(req, res) => {
+    try{
+        res.json(await BrandName.find())
+    }catch(err){
+        console.log(err.message)
+    }
+})
+
+
+app.get('/allbrands/:id', async(req, res)=>{
+    try{
+        return res.json(await BrandName.findById(req.params.id))
+    }catch(err){
+        console.log(err.message)
+    }
+})
+
+
 
 app.listen('3000', ()=>{
     console.log("Server Running")
