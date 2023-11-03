@@ -42,6 +42,13 @@ app.get('/allbrands/:id', async(req, res)=>{
     }
 })
 
+app.delete('/deletebrand/:id', async(req, res) => {
+    try{
+        res.json(await BrandName.findByIdAndDelete(req.params.id))
+    } catch(err){
+        console.log(err.message)
+    }
+})
 
 
 app.listen('3000', ()=>{
